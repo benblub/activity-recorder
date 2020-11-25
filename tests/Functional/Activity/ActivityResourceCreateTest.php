@@ -18,8 +18,8 @@ class ActivityResourceCreateTest extends CustomApiTestCase
         $client->request('POST', '/api/activities', [
             'json' => [
                 'activityDate' => $d->format('Y-m-d'),
-                'performendTime' => 1.0,
-                'text' => 'New activity created!'
+                'performendTime' => 2.5,
+                'text' => 'awesome code created!'
             ]
         ]);
         $this->assertResponseStatusCodeSame(self::RESOURSE_CREATED_201);
