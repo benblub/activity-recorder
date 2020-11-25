@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ActivityRepository;
+use App\Validator\HappyCoder;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
@@ -40,6 +41,7 @@ class Activity
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
+     * @HappyCoder()
      */
     private $description;
 

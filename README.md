@@ -26,3 +26,11 @@ php bin/phpunit
 
 Start Transactions & Rollback between each Test. Not installed yet.. 
 https://github.com/dmaicher/doctrine-test-bundle
+
+## Use
+
+Webserver configuration https://symfony.com/doc/current/setup/web_server_configuration.html
+
+This Project creates your API. Now you can use any kind of App to interact with your API. 
+Build your own or use a Generator from https://api-platform.com/docs/
+Simply test your API visit http://localhost:8000/api
