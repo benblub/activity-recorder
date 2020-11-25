@@ -12,10 +12,17 @@ run Composer with your Shell and install Project Depencies.
 composer install
 ```
 
-## Structure
-* Controller
-* DataPersister
-* DataProvider
-* Entity
-* Repository
-* Service
+## Tests
+Setup Database credentials in .env.test.  
+create test Database & Structure
+````
+php bin/console doctrine:database:create --env=test
+php bin/console doctrine:migrations:migrate --env=test
+````
+run tests 
+````
+php bin/phpunit
+````
+
+Start Transactions & Rollback between each Test. Not installed yet.. 
+https://github.com/dmaicher/doctrine-test-bundle
