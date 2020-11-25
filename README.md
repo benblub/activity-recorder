@@ -12,3 +12,10 @@ run Composer with your Shell and install Project Depencies.
 composer install
 ```
 
+## Structure
+* Controller
+* DataPersister
+* DataProvider
+* Entity
+* Repository
+* Service
