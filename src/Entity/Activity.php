@@ -14,7 +14,7 @@ use DateTimeInterface;
  * @ORM\Entity(repositoryClass=ActivityRepository::class)
  * @ApiResource()
  * @ApiFilter(DateFilter::class, properties={"activityDate"})
- * @ApiFilter(SearchFilter::class, properties={"id": "exact", "performendTime": "exact", "text": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "performendTime": "exact", "description": "partial"})
  */
 class Activity
 {
@@ -38,7 +38,7 @@ class Activity
     /**
      * @ORM\Column(type="text")
      */
-    private $text;
+    private $description;
 
     public function getId(): ?int
     {
@@ -69,14 +69,14 @@ class Activity
         return $this;
     }
 
-    public function getText(): ?string
+    public function getDescription(): ?string
     {
-        return $this->text;
+        return $this->description;
     }
 
-    public function setText(string $text): self
+    public function setDescription(string $description): self
     {
-        $this->text = $text;
+        $this->description = $description;
 
         return $this;
     }

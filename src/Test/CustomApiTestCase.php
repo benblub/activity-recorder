@@ -22,7 +22,7 @@ class CustomApiTestCase extends ApiTestCase
         $activity = new Activity();
         $activity->setActivityDate(new DateTime());
         $activity->setPerformendTime(1.0);
-        $activity->setText("awesome code written!");
+        $activity->setDescription("awesome code written!");
 
         return $activity;
     }
