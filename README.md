@@ -10,6 +10,9 @@ Clone or Download & unzip this Project.
 run Composer with your Shell and install Project Depencies.
 ```
 composer install
+Setup Database credentials in your [ENV](https://symfony.com/doc/current/configuration.html#configuration-environments)
+php bin/console doctrine:database:create 
+php bin/console doctrine:migrations:migrate 
 ```
 
 ## Tests
