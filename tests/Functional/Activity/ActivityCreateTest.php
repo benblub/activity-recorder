@@ -5,7 +5,7 @@ namespace App\Tests\Functional\Activity;
 use App\Test\CustomApiTestCase;
 use DateTime;
 
-class ActivityResourceCreateTest extends CustomApiTestCase
+class ActivityCreateTest extends CustomApiTestCase
 {
     /**
      * create a Resource as anymous

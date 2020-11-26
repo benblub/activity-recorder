@@ -6,6 +6,7 @@ use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\Client;
 use App\Entity\Activity;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 
 class CustomApiTestCase extends ApiTestCase
 {
@@ -17,12 +18,21 @@ class CustomApiTestCase extends ApiTestCase
     const RESOURCE_NOT_FOUND_404 = 404;
     const UNAUTHORIZED_401 = 401;
 
+    protected function getEntityManager(): EntityManagerInterface
+    {
+        return self::$container->get('doctrine')->getManager();
+    }
+
     protected function createActivity() : Activity
     {
         $activity = new Activity();
         $activity->setActivityDate(new DateTime());
         $activity->setPerformendTime(1.0);
         $activity->setDescription("awesome code written!");
+
+        $em = $this->getEntityManager();
+        $em->persist($activity);
+        $em->flush();
 
         return $activity;
     }
