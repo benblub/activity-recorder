@@ -45,7 +45,9 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
      */
     public function persist($data, array $context = [])
     {
-        $result = $this->decorated->persist($data, $context);
+        if (!$data instanceof User) {
+            return $this->decorated->persist($data, $context);
+        }
 
         /** CreateUser */
         if (
@@ -66,7 +68,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
             $this->manager->flush();
         }
 
-        return $result;
+        //return $result;
     }
 
     public function remove($data, array $context = [])
@@ -77,7 +79,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
     /**
      * @param User $user
      */
-    private function createUser(User $user) : void
+    private function createUser($user) : void
     {
         if ($user->getPlainPassword()) {
             $user->setPassword(
