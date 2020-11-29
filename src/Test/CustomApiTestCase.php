@@ -3,8 +3,8 @@
 namespace App\Test;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
-use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\Client;
 use App\Entity\Activity;
+use App\Entity\User;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -25,15 +25,55 @@ class CustomApiTestCase extends ApiTestCase
 
     protected function createActivity() : Activity
     {
+        $user = $this->createUser();
+
         $activity = new Activity();
         $activity->setActivityDate(new DateTime());
         $activity->setPerformendTime(1.0);
         $activity->setDescription("awesome code written!");
+        $activity->setUser($user);
 
-        $em = $this->getEntityManager();
-        $em->persist($activity);
-        $em->flush();
+        $this->save($activity);
 
         return $activity;
+    }
+
+    protected function createUser() : User
+    {
+        $user = new User();
+        $user->setEmail(uniqid() . '@mail.com');
+        $user->setPassword('superSecret');
+        $user->setRoles(['ROLE_USER']);
+        $user->setApiToken(uniqid());
+        $user->setEnabled(true);
+
+        $this->save($user);
+
+        return $user;
+    }
+
+    protected function login(string $email, string $password)
+    {
+        $client = self::createClient();
+        $client->request('POST', '/login', [
+           'json' => [
+               'email' => $email,
+               'password' => $password
+           ]
+        ]);
+
+        $this->assertResponseStatusCodeSame(204);
+    }
+
+    protected function logout()
+    {
+        // todo : logout
+    }
+
+    private function save($entity)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($entity);
+        $em->flush();
     }
 }
