@@ -22,7 +22,7 @@ class ActivityCreateTest extends CustomApiTestCase
                 'activityDate' => $d->format('Y-m-d'),
                 'performendTime' => 2.5,
                 'description' => 'awesome code created!',
-                'user' => '/api/users/8'
+                'user' => '/api/users/' . $user->getId()
             ],
             'headers' => [
                 'X-AUTH-TOKEN' => $user->getApiToken()
