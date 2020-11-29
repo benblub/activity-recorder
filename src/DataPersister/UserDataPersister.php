@@ -6,6 +6,7 @@ namespace App\DataPersister;
 
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\Entity\User;
+use App\Service\Mailer\RegistrationEmail;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -23,16 +24,22 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
      * @var UserPasswordEncoderInterface
      */
     private UserPasswordEncoderInterface $passwordEncoder;
+    /**
+     * @var RegistrationEmail
+     */
+    private RegistrationEmail $registrationEmail;
 
     public function __construct(
         ContextAwareDataPersisterInterface $decorated,
         EntityManagerInterface $manager,
-        UserPasswordEncoderInterface $passwordEncoder
+        UserPasswordEncoderInterface $passwordEncoder,
+        RegistrationEmail $registrationEmail
     )
     {
         $this->manager = $manager;
         $this->decorated = $decorated;
         $this->passwordEncoder = $passwordEncoder;
+        $this->registrationEmail = $registrationEmail;
     }
 
     public function supports($data, array $context = []): bool
@@ -56,6 +63,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
             )
         ) {
             $this->createUser($data);
+            $this->sendMail($data);
         }
 
         /** UpdateUser */
@@ -67,8 +75,6 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
             $this->manager->persist($data);
             $this->manager->flush();
         }
-
-        //return $result;
     }
 
     public function remove($data, array $context = [])
@@ -96,5 +102,10 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
 
         $this->manager->persist($user);
         $this->manager->flush();
+    }
+
+    private function sendMail(User $user)
+    {
+        $this->registrationEmail->sendEmail($user);
     }
 }
