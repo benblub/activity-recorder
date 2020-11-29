@@ -14,10 +14,13 @@ class ActivityUpdateTest extends CustomApiTestCase
         $activity = $this->createActivity();
 
         $client->request('PUT', '/api/activities/' . $activity->getId(), [
-           'json' => [
-               'performendTime' => 55,
-               'description' => 'i was not finished with my awesome coding session!'
-           ]
+            'headers' => [
+                'X-AUTH-TOKEN' => $activity->getUser()->getApiToken()
+            ],
+            'json' => [
+                'performendTime' => 55,
+                'description' => 'i was not finished with my awesome coding session!'
+            ]
         ]);
 
         $this->assertResponseStatusCodeSame(self::RESOURSE_RESPONSE_200);

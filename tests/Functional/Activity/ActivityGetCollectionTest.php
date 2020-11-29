@@ -12,10 +12,14 @@ class ActivityGetCollectionTest extends CustomApiTestCase
     {
         $client = self::createClient();
 
-        $this->createActivity();
+        $activity = $this->createActivity();
         $this->createActivity();
 
-        $response = $client->request('GET', '/api/activities');
+        $response = $client->request('GET', '/api/activities', [
+            'headers' => [
+                'X-AUTH-TOKEN' => $activity->getUser()->getApiToken()
+            ]
+        ]);
 
         $this->assertResponseStatusCodeSame(self::RESOURSE_RESPONSE_200);
     }

@@ -13,7 +13,11 @@ class ActivityDeleteTest extends CustomApiTestCase
 
         $activity = $this->createActivity();
 
-        $client->request('DELETE', '/api/activities/' . $activity->getId());
+        $client->request('DELETE', '/api/activities/' . $activity->getId(), [
+            'headers' => [
+                'X-AUTH-TOKEN' => $activity->getUser()->getApiToken()
+            ]
+        ]);
 
         $this->assertResponseStatusCodeSame(self::RESOURCE_DELETED_204);
     }
