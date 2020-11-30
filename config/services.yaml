@@ -4,6 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    dev_auth: '%env(APP_AUTH_DEV)%'
 
 services:
     # default configuration for services in *this* file
@@ -32,6 +33,6 @@ services:
 
     App\DataPersister\ActivityDataPersister:
         decorates: 'api_platform.doctrine.orm.data_persister'
-        # Uncomment only if autoconfiguration is disabled
-        #arguments: ['@App\DataPersister\UserDataPersister.inner']
-        #tags: [ 'api_platform.data_persister' ]
+
+    App\DataPersister\UserDataPersister:
+        decorates: 'api_platform.doctrine.orm.data_persister'
