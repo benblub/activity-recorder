@@ -23,6 +23,11 @@ class CustomApiTestCase extends ApiTestCase
         return self::$container->get('doctrine')->getManager();
     }
 
+    protected function getPasswordEncoder()
+    {
+        return self::$container->get('security.user_password_encoder.generic');
+    }
+
     protected function createActivity() : Activity
     {
         $user = $this->createUser();
@@ -40,9 +45,13 @@ class CustomApiTestCase extends ApiTestCase
 
     protected function createUser() : User
     {
+        $passwordEncoder = $this->getPasswordEncoder();
+
         $user = new User();
         $user->setEmail(uniqid() . '@mail.com');
-        $user->setPassword('superSecret');
+        $user->setPassword(
+            $passwordEncoder->encodePassword($user, 'superSecret')
+        );
         $user->setRoles(['ROLE_USER']);
         $user->setApiToken(uniqid());
         $user->setEnabled(true);
