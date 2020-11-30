@@ -1,4 +1,6 @@
 # activity-recorder
+![Build Status](https://travis-ci.org/benblub/activity-recorder.svg?branch=master) 
+
 Record your work or whatever activity with this Api Project.
 
 ## Requirements
