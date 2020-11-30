@@ -40,15 +40,30 @@ class SecurityController extends AbstractController
         IriConverterInterface $iriConverter
     ) : Response
     {
-        $user = $this->manager->getRepository(User::class)
-            ->findOneBy([
-                'email' => $request->get('email'),
-            ]);
+        if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+            $data = json_decode($request->getContent(), true);
 
-        if (!$passwordEncoder->isPasswordValid($user, $request->get('password'))) {
-            return new JsonResponse([
-                'error' => 'Email or Password wrong',
-            ], self::UNAUTHORIZED);
+            $user = $this->manager->getRepository(User::class)
+                ->findOneBy([
+                    'email' => $data['email'],
+                ]);
+
+            if (!$passwordEncoder->isPasswordValid($user, $data['password'])) {
+                return new JsonResponse([
+                    'error' => 'Email or Password wrong',
+                ], self::UNAUTHORIZED);
+            }
+        } else {
+            $user = $this->manager->getRepository(User::class)
+                ->findOneBy([
+                    'email' => $request->get('email'),
+                ]);
+
+            if (!$passwordEncoder->isPasswordValid($user, $request->get('password'))) {
+                return new JsonResponse([
+                    'error' => 'Email or Password wrong',
+                ], self::UNAUTHORIZED);
+            }
         }
 
         return new JsonResponse([
