@@ -216,6 +216,11 @@ class User implements UserInterface
         return $this;
     }
 
+    public function isEnabled(): bool
+    {
+        return $this->enabled;
+    }
+
     public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
