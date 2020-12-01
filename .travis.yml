@@ -39,7 +39,7 @@ before_install:
 
 install:
   - composer install --no-interaction
-  - - .env .env.test
+  - cp .env .env.test
   - php bin/console doctrine:database:create --env=test --no-interaction
   - php bin/console doctrine:migrations:migrate --env-test --no-interaction
 
