@@ -45,3 +45,6 @@ install:
 
 script:
   - phpunit
+
+services:
+  - mysql
