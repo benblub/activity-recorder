@@ -18,6 +18,8 @@ env:
     - MIN_PHP=7.4
     - SYMFONY_PROCESS_PHP_TEST_BINARY=~/.phpenv/shims/php
     - SYMFONY_PHPUNIT_DISABLE_RESULT_CACHE=1
+    - SYMFONY_VERSION="5.1.*" DB=mysql
+    - APP_ENV=test
 
 matrix:
   include:
