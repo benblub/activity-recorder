@@ -7,12 +7,14 @@ git:
   depth: 2
 
 addons:
-  mariadb: '10.0'
   apt_packages:
     - parallel
     - language-pack-fr-base
     - zookeeperd
     - libzookeeper-mt-dev
+
+services:
+  - mysql
 
 env:
   global:
@@ -39,7 +41,8 @@ cache:
     - ~/php-ext
 
 before_install:
-  - mysql -e 'CREATE DATABASE activity_recorder_test;'
+  - which mysql && until mysql -u root -e "show status" &>/dev/null; do sleep 1; done
+  - mysql -u root -e 'CREATE DATABASE activity_recorder_test;'
 
 install:
   - composer install --no-interaction
