@@ -8,20 +8,19 @@ use DateTime;
 class ActivityCreateTest extends CustomApiTestCase
 {
     /**
-     * create a Resource as anymous
+     * @dataProvider activityDataSets
      */
-    public function testCreateActivity()
+    public function testCreateActivity(float $performendTime, string $description, string $activityDate)
     {
         $client = self::createClient();
-
         $user = $this->createUser();
-
         $d = new DateTime();
+
         $client->request('POST', '/api/activities', [
             'json' => [
-                'activityDate' => $d->format('Y-m-d'),
-                'performendTime' => 2.5,
-                'description' => 'awesome code created!',
+                'activityDate' => $activityDate,
+                'performendTime' => $performendTime,
+                'description' => $description,
                 'user' => '/api/users/' . $user->getId()
             ],
             'headers' => [
@@ -29,5 +28,16 @@ class ActivityCreateTest extends CustomApiTestCase
             ]
         ]);
         $this->assertResponseStatusCodeSame(self::RESOURSE_CREATED_201);
+    }
+
+    public function activityDataSets()
+    {
+        $d = new DateTime();
+
+        return [
+            [1.5, '1 awesome code created!', $d->format('Y-m-d')],
+            [2.5, '2 awesome code created!', $d->format('Y-m-d')],
+            [4.5, '3 awesome code created!', $d->format('Y-m-d')],
+        ];
     }
 }
