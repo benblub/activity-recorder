@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Exception\NotHappyException;
 use App\Repository\ActivityRepository;
 use App\Validator\HappyCoder;
 use App\Validator\IsUserOwnerClass;
@@ -107,6 +108,11 @@ class Activity
 
     public function setDescription(string $description): self
     {
+
+        if ($description === 'unhappy') {
+            throw new NotHappyException();
+        }
+
         $this->description = $description;
 
         return $this;
