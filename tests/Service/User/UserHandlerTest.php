@@ -1,6 +1,6 @@
 <?php
 
-namespace App\tests\Service\User;
+namespace App\Tests\Service\User;
 
 
 use App\Factory\UserFactory;
