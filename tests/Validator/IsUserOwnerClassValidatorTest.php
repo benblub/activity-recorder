@@ -35,7 +35,7 @@ class IsUserOwnerClassValidatorTest extends KernelTestCase
 
     public function testValidate() : void
     {
-        $user = $this->userFactory->createUser();
+        $user = $this->userFactory->createUser('mail@mail.ch', true);
         $activity = new Activity();
         $activity->setUser($user);
 
