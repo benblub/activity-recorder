@@ -10,13 +10,29 @@ use PHPUnit\Framework\TestCase;
 
 class UserFactoryTest extends TestCase
 {
+    /**
+     * @var UserFactory
+     */
+    private $factory;
+
+    public function setUp()
+    {
+        $this->factory = new UserFactory();
+    }
+
     public function testCreateUser()
     {
-        $factory = new UserFactory();
-        $user = $factory->createUser('email@email.com', true, ['ROLE_USER']);
+        $user = $this->factory->createUser('email@email.com', true);
 
         $this->assertInstanceOf(User::class, $user);
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
-        $this->assertTrue($user->getEnabled());
+    }
+
+    public function testCreateAdmin()
+    {
+        $user = $this->factory->createAdmin('email@email.com', true);
+
+        $this->assertInstanceOf(User::class, $user);
+        $this->assertContains('ROLE_ADMIN', $user->getRoles());
     }
 }
