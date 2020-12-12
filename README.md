@@ -1,6 +1,8 @@
 # activity-recorder
 ![Build Status](https://travis-ci.org/benblub/activity-recorder.svg?branch=master) 
 
+Dont use this Repository on production. Its for learning purposes with love created.
+
 Record your work or whatever activity with this Api Project.
 
 ## Requirements
@@ -33,6 +35,8 @@ php bin/phpunit
 
 Start Transactions & Rollback between each Test. Not installed yet.. 
 https://github.com/dmaicher/doctrine-test-bundle
+
+The Functional & Integration tests require a mailserver aswell. Setup your Credentials in ENV.
 
 ## Use
 
