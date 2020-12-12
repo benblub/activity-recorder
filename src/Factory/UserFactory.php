@@ -10,7 +10,7 @@ class UserFactory
         $user = new User();
         $user->setEmail($email);
         $user->setEnabled($enabled);
-        $user->setRoles(['ROLE_USER']);
+        $user->setRoles([User::ROLE_USER]);
 
         return $user;
     }
@@ -20,7 +20,7 @@ class UserFactory
         $user = new User();
         $user->setEmail($email);
         $user->setEnabled($enabled);
-        $user->setRoles(['ROLE_ADMIN']);
+        $user->setRoles([User::ROLE_ADMIN]);
 
         return $user;
     }

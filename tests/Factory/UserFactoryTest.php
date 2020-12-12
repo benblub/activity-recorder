@@ -25,7 +25,7 @@ class UserFactoryTest extends TestCase
         $user = $this->factory->createUser('email@email.com', true);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals(['ROLE_USER'], $user->getRoles());
+        $this->assertContains(User::ROLE_USER, $user->getRoles());
     }
 
     public function testCreateAdmin()
@@ -33,6 +33,6 @@ class UserFactoryTest extends TestCase
         $user = $this->factory->createAdmin('email@email.com', true);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertContains('ROLE_ADMIN', $user->getRoles());
+        $this->assertContains(User::ROLE_ADMIN, $user->getRoles());
     }
 }
