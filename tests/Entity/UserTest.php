@@ -27,6 +27,6 @@ class UserTest extends TestCase
         $user->addActivity($activity);
         $user->removeActivity($activity);
 
-        $this->assertCount(0, $user->getActivities());
+        $this->assertEmpty($user->getActivities());
     }
 }
