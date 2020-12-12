@@ -5,12 +5,12 @@ use App\Entity\User;
 
 class UserFactory
 {
-    public function createUser() : User
+    public function createUser(string $email, bool $enabled, array $roles) : User
     {
         $user = new User();
-        $user->setEmail('mail@mail.com');
-        $user->setEnabled(true);
-        $user->setRoles(['ROLE_USER']);
+        $user->setEmail($email);
+        $user->setEnabled($enabled);
+        $user->setRoles($roles);
 
         return $user;
     }

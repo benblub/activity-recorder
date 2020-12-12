@@ -13,7 +13,7 @@ class UserFactoryTest extends TestCase
     public function testCreateUser()
     {
         $factory = new UserFactory();
-        $user = $factory->createUser();
+        $user = $factory->createUser('email@email.com', true, ['ROLE_USER']);
 
         $this->assertInstanceOf(User::class, $user);
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
