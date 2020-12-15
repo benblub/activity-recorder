@@ -35,5 +35,7 @@ class RegistrationEmail
             ]);
 
         $this->mailer->send($email);
+
+        return $email;
     }
 }
