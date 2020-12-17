@@ -8,12 +8,11 @@ use App\Validator\IsUserOwnerClassValidator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_MockObject_MockObject;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Context\ExecutionContext;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-class IsUserOwnerClassValidatorTest extends KernelTestCase
+class IsUserOwnerClassValidatorTest extends TestCase
 {
     /**
      * @var UserFactory
