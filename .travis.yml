@@ -12,6 +12,7 @@ addons:
     - language-pack-fr-base
     - zookeeperd
     - libzookeeper-mt-dev
+    - mysql-server
 
 services:
   - mysql
