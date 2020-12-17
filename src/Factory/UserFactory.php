@@ -21,6 +21,11 @@ class UserFactory
         return $user;
     }
 
+    /**
+     * @param string $email
+     * @param bool $enabled
+     * @return User
+     */
     public function createAdmin(string $email, bool $enabled) : User
     {
         $user = new User();
