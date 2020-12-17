@@ -44,7 +44,7 @@ class IsUserOwnerClassValidatorTest extends KernelTestCase
 
         /** @var ExecutionContextInterface|MockObject $context */
         $context = $this->getMockExecutionContext();
-        $context->expects($this->never())->method('buildViolation');
+        $context->expects($this->once())->method('buildViolation');
 
         $validator = new IsUserOwnerClassValidator($this->security);
         $validator->initialize($context);
