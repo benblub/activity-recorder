@@ -23,7 +23,7 @@ class IsUserOwnerClassValidatorTest extends KernelTestCase
     /** @var Security|PHPUnit_Framework_MockObject_MockObject */
     private $security;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->userFactory = new UserFactory();
 
