@@ -26,8 +26,8 @@ class ActivityRepository extends ServiceEntityRepository
     public function findByUser(User $user) : ?array
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.user = :val')
-            ->setParameter('val', $user)
+            ->andWhere('a.user = :user')
+            ->setParameter('user', $user)
             ->orderBy('a.id', 'DESC')
             ->getQuery()
             ->getResult()
