@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Activity;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -22,7 +23,7 @@ class ActivityRepository extends ServiceEntityRepository
    /**
     * @return Activity[] Returns an array of Activity objects
     */
-    public function findByUser($user)
+    public function findByUser(User $user) : ?array
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.user = :val')
