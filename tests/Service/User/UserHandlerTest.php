@@ -20,7 +20,7 @@ class UserHandlerTest extends TestCase
 
     public function testActivate()
     {
-        $user = $this->factory->createUser('mail@mail.com', false, ['ROLE_USER']);
+        $user = $this->factory->createUser('mail@mail.com', false);
 
         $this->assertEquals(false, $user->getEnabled());
 
