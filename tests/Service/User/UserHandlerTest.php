@@ -13,14 +13,14 @@ class UserHandlerTest extends TestCase
      */
     private $factory;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->factory = new UserFactory();
     }
 
     public function testActivate()
     {
-        $user = $this->factory->createUser('mail@mail.com', false, ['ROLE_USER']);
+        $user = $this->factory->createUser('mail@mail.com', false);
 
         $this->assertEquals(false, $user->getEnabled());
 

@@ -8,12 +8,11 @@ use App\Validator\IsUserOwnerClassValidator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_MockObject_MockObject;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Context\ExecutionContext;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-class IsUserOwnerClassValidatorTest extends KernelTestCase
+class IsUserOwnerClassValidatorTest extends TestCase
 {
     /**
      * @var UserFactory
@@ -23,7 +22,7 @@ class IsUserOwnerClassValidatorTest extends KernelTestCase
     /** @var Security|PHPUnit_Framework_MockObject_MockObject */
     private $security;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->userFactory = new UserFactory();
 
@@ -44,7 +43,7 @@ class IsUserOwnerClassValidatorTest extends KernelTestCase
 
         /** @var ExecutionContextInterface|MockObject $context */
         $context = $this->getMockExecutionContext();
-        $context->expects($this->never())->method('buildViolation');
+        $context->expects($this->once())->method('buildViolation');
 
         $validator = new IsUserOwnerClassValidator($this->security);
         $validator->initialize($context);
