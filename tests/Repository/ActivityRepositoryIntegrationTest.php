@@ -38,6 +38,18 @@ class ActivityRepositoryIntegrationTest extends CustomApiTestCase
         // $this->assertCount(1, $activityFromDatabase);
     }
 
+    public function testifnull()
+    {
+        $this->createActivity();
+
+        $activityFromDatabase = $this->entityManager->getRepository(Activity::class)
+            ->ifnull();
+
+        $this->assertIsArray($activityFromDatabase);
+        $this->assertArrayHasKey(1, $activityFromDatabase);
+        //$this->assertContains('awesome code written!', $activityFromDatabase[95]);
+    }
+
     protected function tearDown(): void
     {
         parent::tearDown();

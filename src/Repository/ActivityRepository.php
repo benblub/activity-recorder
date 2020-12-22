@@ -34,6 +34,23 @@ class ActivityRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * @return array[] Returns an array of Activity data
+     */
+    public function ifnull() : ?array
+    {
+        return $this->getEntityManager()->createQuery("
+          SELECT 
+            IFNULL(a.description, ''), 
+            IFNULL(a.id, ''),
+            IFNULL(a.activityDate, ''),
+            IFNULL(a.performendTime, ''),
+            IFNULL(a.user, '')
+          FROM App\Entity\Activity a
+        ")
+            ->getResult();
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Activity
