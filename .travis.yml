@@ -1,7 +1,7 @@
 
 language: php
 
-dist: xenial
+dist: bionic
 
 git:
   depth: 2
