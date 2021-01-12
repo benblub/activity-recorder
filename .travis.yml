@@ -41,13 +41,11 @@ cache:
     - php-$MIN_PHP
     - ~/php-ext
 
-before_install:
-  - which mysql && until mysql -u root -e "show status" &>/dev/null; do sleep 1; done
-  - mysql -u root -e 'CREATE DATABASE activity_recorder_test;'
-
 install:
   - composer install --no-interaction
   - cp .env .env.test
+  - php bin/console doctrine:database:create --env=test
+  - php bin/console doctrine:schema:create --env=test
   - php bin/console doctrine:migrations:migrate --env-test --no-interaction -vvv
 
 script:
