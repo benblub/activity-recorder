@@ -1,5 +1,5 @@
 # activity-recorder
-![Build Status](https://travis-ci.org/benblub/activity-recorder.svg?branch=master) 
+![Build Status](https://travis-ci.org/benblub/activity-recorder.svg?branch=main) 
 
 Dont use this Repository on production. Its for learning purposes with love created.
 
