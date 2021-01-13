@@ -14,26 +14,8 @@ env:
     - SYMFONY_VERSION="5.2.*" DB=mysql
     - APP_ENV=test
 
-matrix:
-  include:
-    - php: 7.4
-      env: deps=high
-      services: [memcached]
-  fast_finish: true
-  allow_failures:
-    - php: 8.0snapshot
-      services: [memcached]
-
-cache:
-  directories:
-    - .phpunit
-    - php-$MIN_PHP
-    - ~/php-ext
-
 before_install:
-  - sudo mkdir -p /var/run/mysqld
-  - sudo ln -s /run/mysql-5.6/mysqld.sock /var/run/mysqld/mysqld.sock
-  - mysql -V
+  - sudo systemctl start mysql
   - mysql -e 'create database foo;'
 
 install:
