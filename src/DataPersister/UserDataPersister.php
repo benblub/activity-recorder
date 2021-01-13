@@ -63,7 +63,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
             )
         ) {
             $this->createUser($data);
-            $this->sendMail($data);
+            //$this->sendMail($data);
         }
 
         /** UpdateUser */
