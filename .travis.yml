@@ -6,14 +6,6 @@ dist: bionic
 git:
   depth: 2
 
-addons:
-  apt_packages:
-    - parallel
-    - language-pack-fr-base
-    - zookeeperd
-    - libzookeeper-mt-dev
-    - mysql-server
-
 services:
   - mysql
 
@@ -22,7 +14,7 @@ env:
     - MIN_PHP=7.4
     - SYMFONY_PROCESS_PHP_TEST_BINARY=~/.phpenv/shims/php
     - SYMFONY_PHPUNIT_DISABLE_RESULT_CACHE=1
-    - SYMFONY_VERSION="5.1.*" DB=mysql
+    - SYMFONY_VERSION="5.2.*" DB=mysql
     - APP_ENV=test
 
 matrix:
@@ -48,6 +40,10 @@ install:
   - php bin/console doctrine:schema:create --env=test
   - php bin/console doctrine:migrations:migrate --env-test --no-interaction -vvv
 
+before_script:
+  - mysql -V
+  - mysql -e 'create database foo;'
+  
 script:
   - phpunit
 
