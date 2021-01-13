@@ -1,10 +1,7 @@
 
 language: php
 
-dist: bionic
-
-git:
-  depth: 2
+dist: xenial
 
 services:
   - mysql
@@ -33,16 +30,16 @@ cache:
     - php-$MIN_PHP
     - ~/php-ext
 
+before_install:
+  - mysql -V
+  - mysql -e 'create database foo;'
+
 install:
   - composer install --no-interaction
   - cp .env .env.test
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
   - php bin/console doctrine:migrations:migrate --env-test --no-interaction -vvv
-
-before_script:
-  - mysql -V
-  - mysql -e 'create database foo;'
   
 script:
   - phpunit
