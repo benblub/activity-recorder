@@ -39,7 +39,11 @@ install:
   - cp .env .env.test
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:migrations:migrate --env=test --no-interaction
+  - composer require satooshi/php-coveralls:dev-master
   
 script:
-  - phpunit
+  - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
+
+after_script:
+  - php vendor/bin/coveralls -v
 
