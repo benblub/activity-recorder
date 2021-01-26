@@ -1,5 +1,5 @@
 # activity-recorder
-![Build Status](https://travis-ci.org/benblub/activity-recorder.svg?branch=main) 
+![Build Status](https://travis-ci.org/benblub/activity-recorder.svg?branch=main) [![Coverage Status](https://coveralls.io/repos/github/benblub/activity-recorder/badge.svg?branch=main)](https://coveralls.io/github/benblub/activity-recorder?branch=main)
 
 Dont use this Repository on production. Its for learning purposes with love created.
 
