@@ -26,6 +26,6 @@ class HappyCommandTest extends KernelTestCase
         ));
 
         $output = $commandTester->getDisplay();
-        $this->assertContains('Have fun!', $output);
+        $this->assertStringContainsString('Have fun!', $output);
     }
 }
