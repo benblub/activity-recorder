@@ -42,7 +42,7 @@ install:
   - composer require php-coveralls/php-coveralls
   
 script:
-  - phpunit --coverage-clover build/logs/clover.xml
+  - phpunit --coverage-clover build/logs/clover.xml -c app
 
 after_success:
   - travis_retry php vendor/bin/php-coveralls -v
