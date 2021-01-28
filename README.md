@@ -11,7 +11,13 @@ Record your work or whatever activity with this Api Project.
 https://symfony.com/doc/current/setup.html#technical-requirements
 
 ## Install
+install with composer `composer create-project benblub/activity-recorder`
+
+or
+
 Clone or Download & unzip this Project. 
+
+and 
 
 run Composer with your Shell and install Project Depencies.
 ```
