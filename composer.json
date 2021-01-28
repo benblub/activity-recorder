@@ -1,4 +1,5 @@
 {
+    "name": "benblub/activity-recorder",
     "type": "project",
     "license": "proprietary",
     "require": {
