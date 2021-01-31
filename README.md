@@ -6,7 +6,7 @@
 [![Latest Stable Version](https://poser.pugx.org/benblub/activity-recorder/v/stable.png)](https://packagist.org/packages/benblub/activity-recorder)
 
 
-Dont use this Repository on production. Its for learning purposes with love created.
+Dont use this Repository on production. Its for learning purposes with :heart: created.
 
 Record your work or whatever activity with this Api Project.
 
