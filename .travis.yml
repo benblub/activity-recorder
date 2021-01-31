@@ -13,6 +13,7 @@ env:
     - SYMFONY_PHPUNIT_DISABLE_RESULT_CACHE=1
     - SYMFONY_VERSION="5.2.*" DB=mysql
     - APP_ENV=test
+    - XDEBUG_MODE=coverage
     
 matrix:	
   include:	
