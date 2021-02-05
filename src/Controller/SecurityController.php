@@ -30,7 +30,7 @@ class SecurityController extends AbstractController
      * Use an X-AUTH Api Token to Communicate with our API
      * Post email and Password to get a Api Token.
      *
-     * @Route("/login", name="login_get_token", methods={"POST"})
+     * @Route("/api/login", name="login_get_token", methods={"POST"})
      * @param Request $request
      * @return JsonResponse
      */
