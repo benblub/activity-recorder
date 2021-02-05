@@ -27,7 +27,7 @@ class UserLoginTest extends CustomApiTestCase
 
         $user = $this->createUser();
 
-        $response =$client->request('POST', '/login', [
+        $response =$client->request('POST', '/api/login', [
             'json' => [
                 'email' => $user->getEmail(),
                 'password' => 'superSecret'
