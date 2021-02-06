@@ -12,6 +12,7 @@ use App\Validator\IsUserOwnerClass;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use DateTimeInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -21,9 +22,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource(
  *     collectionOperations={
  *          "get" = { "security" = "is_granted('ROLE_USER')" },
- *          "post" = {
- *              "security" = "is_granted('ROLE_USER')"
- *          },
+ *          "post" = { "security" = "is_granted('ROLE_USER')" }
  *     },
  *     itemOperations={
  *          "get" = { "security" = "is_granted('ROLE_USER') and object.getUser() == user" },
@@ -33,6 +32,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @ApiFilter(DateFilter::class, properties={"activityDate"})
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "performendTime": "exact", "description": "partial"})
+ * @ApiFilter(OrderFilter::class, properties={"id", "performendTime", "description", "activityDate"}, arguments={"orderParameterName"="order"})
  * @IsUserOwnerClass()
  */
 class Activity
