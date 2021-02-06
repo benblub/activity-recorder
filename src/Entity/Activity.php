@@ -45,20 +45,20 @@ class Activity
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="date")
      * @Groups({"user:read", "user:write"})
      */
-    private $activityDate;
+    private DateTimeInterface $activityDate;
 
     /**
      * @ORM\Column(type="float")
      * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank()
      */
-    private $performendTime;
+    private float $performendTime;
 
     /**
      * @ORM\Column(type="text")
@@ -66,14 +66,14 @@ class Activity
      * @Assert\NotBlank()
      * @HappyCoder()
      */
-    private $description;
+    private string $description;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="activities")
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
-    private $user;
+    private User $user;
 
     public function getId(): ?int
     {
