@@ -27,13 +27,14 @@ class UserLoginTest extends CustomApiTestCase
 
         $user = $this->createUser();
 
-        $response =$client->request('POST', '/login', [
+        $response =$client->request('POST', '/api/login', [
             'json' => [
                 'email' => $user->getEmail(),
                 'password' => 'superSecret'
             ]
         ]);
 
+        $this->assertResponseHeaderSame('Content-Type', 'application/json');
         $this->assertResponseStatusCodeSame(self::RESOURSE_RESPONSE_200);
         //$this->assertContains('apiToken', $response->getContent());
     }

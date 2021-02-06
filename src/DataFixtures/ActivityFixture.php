@@ -11,13 +11,19 @@ class ActivityFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $activity = new Activity();
-        $activity->setUser($this->getReference(UserFixture::APP_USER));
-        $activity->setDescription('Awesome work!');
-        $activity->setPerformendTime(1.0);
-        $activity->setActivityDate(new \DateTime());
+        for ($i = 0; $i < 100; $i++) {
+            $activity = new Activity();
+            $activity->setUser($this->getReference(UserFixture::APP_USER));
+            $activity->setDescription(rand(1, 9999) . ' Awesome work! ');
+            $activity->setPerformendTime(rand(1.0, 10.0));
+            $int= mt_rand(1262055681,1862055681);
+            $date = new \DateTime();
+            $date->setTimestamp($int);
+            $activity->setActivityDate($date);
 
-        $manager->persist($activity);
+            $manager->persist($activity);
+        }
+
 
         $manager->flush();
     }

@@ -64,7 +64,7 @@ class CustomApiTestCase extends ApiTestCase
     protected function login(string $email, string $password)
     {
         $client = self::createClient();
-        $client->request('POST', '/login', [
+        $client->request('POST', '/api/login', [
            'json' => [
                'email' => $email,
                'password' => $password
