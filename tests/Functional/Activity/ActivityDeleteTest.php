@@ -2,7 +2,6 @@
 
 namespace App\Tests\Functional\Activity;
 
-
 use App\Test\CustomApiTestCase;
 
 class ActivityDeleteTest extends CustomApiTestCase
@@ -13,7 +12,7 @@ class ActivityDeleteTest extends CustomApiTestCase
 
         $activity = $this->createActivity();
 
-        $client->request('DELETE', '/api/activities/' . $activity->getId(), [
+        $res = $client->request('DELETE', '/api/activities/' . $activity->getId(), [
             'headers' => [
                 'X-AUTH-TOKEN' => $activity->getUser()->getApiToken()
             ]

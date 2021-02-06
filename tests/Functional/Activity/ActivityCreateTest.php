@@ -27,6 +27,8 @@ class ActivityCreateTest extends CustomApiTestCase
                 'X-AUTH-TOKEN' => $user->getApiToken()
             ]
         ]);
+
+        $this->assertResponseHeaderSame('Content-Type', 'application/ld+json; charset=utf-8');
         $this->assertResponseStatusCodeSame(self::RESOURSE_CREATED_201);
     }
 
