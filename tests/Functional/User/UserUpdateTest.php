@@ -20,6 +20,7 @@ class UserUpdateTest extends CustomApiTestCase
             ]
         ]);
 
+        $this->assertResponseHeaderSame('Content-Type', 'application/ld+json; charset=utf-8');
         $this->assertResponseStatusCodeSame(self::RESOURSE_RESPONSE_200);
     }
 }

@@ -34,6 +34,7 @@ class UserLoginTest extends CustomApiTestCase
             ]
         ]);
 
+        $this->assertResponseHeaderSame('Content-Type', 'application/json');
         $this->assertResponseStatusCodeSame(self::RESOURSE_RESPONSE_200);
         //$this->assertContains('apiToken', $response->getContent());
     }
