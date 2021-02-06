@@ -24,6 +24,7 @@ class UserTest extends TestCase
         $activity = new Activity();
 
         $user = new User();
+        $activity->setUser($user);
         $user->addActivity($activity);
         $user->removeActivity($activity);
 
