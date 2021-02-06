@@ -73,7 +73,7 @@ class Activity
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
-    private User $user;
+    private $user;
 
     public function getId(): ?int
     {
