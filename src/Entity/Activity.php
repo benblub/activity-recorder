@@ -29,6 +29,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "put" = { "security" = "is_granted('ROLE_USER') and object.getUser() == user" },
  *          "delete" = { "security" = "is_granted('ROLE_USER') and object.getUser() == user" }
  *     },
+ *     attributes={
+ *      "order"={"id": "DESC"}
+ *     }
  * )
  * @ApiFilter(DateFilter::class, properties={"activityDate"})
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "performendTime": "exact", "description": "partial"})
