@@ -9,7 +9,7 @@ class UserCreateTest extends CustomApiTestCase
     {
         $client = self::createClient();
 
-        $res = $client->request('POST', '/api/users', [
+        $client->request('POST', '/api/users', [
            'json' => [
                'email' => uniqid() . '@test.com',
                'password' => 'secret'
