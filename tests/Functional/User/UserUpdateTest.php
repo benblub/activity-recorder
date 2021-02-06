@@ -1,9 +1,10 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace App\Tests\Functional\User;
 
 use App\Test\CustomApiTestCase;
 
-class UserUpdateTest extends CustomApiTestCase
+final class UserUpdateTest extends CustomApiTestCase
 {
     public function testUpdateUser(): void
     {

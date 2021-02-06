@@ -1,9 +1,10 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace App\Tests\Functional\User;
 
 use App\Test\CustomApiTestCase;
 
-class UserCreateTest extends CustomApiTestCase
+final class UserCreateTest extends CustomApiTestCase
 {
     public function testCreateUser(): void
     {
