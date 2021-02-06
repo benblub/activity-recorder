@@ -5,7 +5,7 @@ use App\Test\CustomApiTestCase;
 
 class UserGetTest extends CustomApiTestCase
 {
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $client = self::createClient();
 

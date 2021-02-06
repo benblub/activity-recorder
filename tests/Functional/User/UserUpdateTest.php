@@ -5,7 +5,7 @@ use App\Test\CustomApiTestCase;
 
 class UserUpdateTest extends CustomApiTestCase
 {
-    public function testUpdateUser()
+    public function testUpdateUser(): void
     {
         $client = self::createClient();
 

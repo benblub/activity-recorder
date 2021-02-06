@@ -21,7 +21,7 @@ class UserLoginTest extends CustomApiTestCase
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
      */
-    public function testLogin()
+    public function testLogin(): void
     {
         $client = self::createClient();
 
