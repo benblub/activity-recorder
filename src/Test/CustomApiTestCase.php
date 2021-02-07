@@ -43,7 +43,7 @@ class CustomApiTestCase extends ApiTestCase
         return $activity;
     }
 
-    protected function createUser() : User
+    protected function createUser(string $role = 'ROLE_USER') : User
     {
         $passwordEncoder = $this->getPasswordEncoder();
 
@@ -52,7 +52,7 @@ class CustomApiTestCase extends ApiTestCase
         $user->setPassword(
             $passwordEncoder->encodePassword($user, 'superSecret')
         );
-        $user->setRoles(['ROLE_USER']);
+        $user->setRoles([$role]);
         $user->setApiToken(uniqid());
         $user->setEnabled(true);
 
