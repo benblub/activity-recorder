@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 
 namespace App\Tests\Functional\User;
@@ -10,7 +10,7 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
-class UserLoginTest extends CustomApiTestCase
+final class UserLoginTest extends CustomApiTestCase
 {
     /**
      * We test here to retrive an apiToken from Post Request with email and password.
@@ -21,7 +21,7 @@ class UserLoginTest extends CustomApiTestCase
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
      */
-    public function testLogin()
+    public function testLogin(): void
     {
         $client = self::createClient();
 

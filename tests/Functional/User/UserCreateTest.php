@@ -1,15 +1,16 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace App\Tests\Functional\User;
 
 use App\Test\CustomApiTestCase;
 
-class UserCreateTest extends CustomApiTestCase
+final class UserCreateTest extends CustomApiTestCase
 {
-    public function testCreateUser()
+    public function testCreateUser(): void
     {
         $client = self::createClient();
 
-        $res = $client->request('POST', '/api/users', [
+        $client->request('POST', '/api/users', [
            'json' => [
                'email' => uniqid() . '@test.com',
                'password' => 'secret'

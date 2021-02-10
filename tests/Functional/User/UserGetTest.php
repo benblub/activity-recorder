@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 namespace App\Tests\Functional\User;
 
 use App\Test\CustomApiTestCase;
 
-class UserGetTest extends CustomApiTestCase
+final class UserGetTest extends CustomApiTestCase
 {
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $client = self::createClient();
 
