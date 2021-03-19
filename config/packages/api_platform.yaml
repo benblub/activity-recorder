@@ -6,10 +6,6 @@ api_platform:
     collection:
         pagination:
             items_per_page: 5 # for development incrase later or let the client chose..
-    formats:
-        jsonld: ['application/ld+json']
-    patch_formats:
-        json: ['application/merge-patch+json']
 
     exception_to_status:
         App\Exception\NotHappyException: 422 # Unprocessable Entity
