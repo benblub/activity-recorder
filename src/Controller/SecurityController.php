@@ -68,7 +68,8 @@ class SecurityController extends AbstractController
 
         return new JsonResponse([
             'apiToken' => $user->getApiToken(),
-            'iri' => $iriConverter->getIriFromItem($user)
+            'iri' => $iriConverter->getIriFromItem($user),
+            'email' => $user->getEmail()
         ], 200);
     }
 
