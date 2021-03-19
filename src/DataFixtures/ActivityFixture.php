@@ -11,7 +11,7 @@ class ActivityFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 10000; $i++) {
             $activity = new Activity();
             $activity->setUser($this->getReference(UserFixture::APP_USER));
             $activity->setDescription(rand(1, 9999) . ' Awesome work! ');
