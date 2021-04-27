@@ -2,30 +2,42 @@
 
 namespace App\Tests\Functional\Activity;
 
+use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\Client;
+use App\Entity\User;
 use App\Test\CustomApiTestCase;
 use DateTime;
 
 class ActivityCreateTest extends CustomApiTestCase
 {
+    private Client $client;
+    private User $user;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->user = $this->createUser();
+        $this->client = self::createClient();
+        $this->client->setDefaultOptions([
+            'headers' => [
+                'X-AUTH-TOKEN' => $this->user->getApiToken()
+            ]
+        ]);
+    }
+
     /**
      * @dataProvider activityDataSets
      */
     public function testCreateActivity(float $performendTime, string $description, string $activityDate)
     {
-        $client = self::createClient();
-        $user = $this->createUser();
         $d = new DateTime();
 
-        $client->request('POST', '/api/activities', [
+        $this->client->request('POST', '/api/activities', [
             'json' => [
                 'activityDate' => $activityDate,
                 'performendTime' => $performendTime,
                 'description' => $description,
-                'user' => '/api/users/' . $user->getId()
+                'user' => '/api/users/' . $this->user->getId()
             ],
-            'headers' => [
-                'X-AUTH-TOKEN' => $user->getApiToken()
-            ]
         ]);
 
         $this->assertResponseHeaderSame('Content-Type', 'application/ld+json; charset=utf-8');
