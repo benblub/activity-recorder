@@ -5,17 +5,22 @@ namespace App\Tests\Functional\Activity;
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\Client;
 use App\Entity\User;
 use App\Test\CustomApiTestCase;
+use App\Tests\Factory\UserFactory;
 use DateTime;
+use Zenstruck\Foundry\Proxy;
 
 class ActivityCreateTest extends CustomApiTestCase
 {
     private Client $client;
-    private User $user;
+    /**
+     * @var User|Proxy
+     */
+    private Proxy $user;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->user = $this->createUser();
+        $this->user = UserFactory::createOne();
         $this->client = self::createClient();
         $this->client->setDefaultOptions([
             'headers' => [
