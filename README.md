@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/benblub/activity-recorder/badge.svg?branch=main)](https://coveralls.io/github/benblub/activity-recorder?branch=main)
 [![Total Downloads](https://poser.pugx.org/benblub/activity-recorder/d/total.png)](https://packagist.org/packages/benblub/activity-recorder)
 [![Latest Stable Version](https://poser.pugx.org/benblub/activity-recorder/v/stable.png)](https://packagist.org/packages/benblub/activity-recorder)
-[![Code Coverage](https://codecov.io/gh/benblub/activity-recorder/branch/main/graph/badge.svg)](https://codecov.io/gh/{your github user}/{your github repo})
+[![Code Coverage](https://codecov.io/gh/benblub/activity-recorder/branch/main/graph/badge.svg)](https://codecov.io/gh/benblub/activity-recorder)
 
 
 
