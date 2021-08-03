@@ -18,12 +18,17 @@ class CustomApiTestCase extends ApiTestCase
     const RESOURCE_NOT_FOUND_404 = 404;
     const UNAUTHORIZED_401 = 401;
 
+    public function setUp(): void
+    {
+        self::bootKernel();
+    }
+
     protected function getEntityManager(): EntityManagerInterface
     {
         return self::$container->get('doctrine')->getManager();
     }
 
-    protected function getPasswordEncoder()
+    public function getPasswordEncoder()
     {
         return self::$container->get('security.user_password_encoder.generic');
     }
